@@ -1,0 +1,35 @@
+buildscript {
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+
+    repositories {
+
+        mavenCentral()
+        jcenter()//https://tiii.tistory.com/45 Jcenter서비스 종료, Jcenter에서 Maven으로 마이그레이션해야함
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+
+}
+
+
+apply plugin : 'java'
+apply plugin : 'eclipse'
+apply plugin : 'org.springframework.boot'
+apply plugin : 'io.spring.dependency-management'
+
+group 'com.org.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
