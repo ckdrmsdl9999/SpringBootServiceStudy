@@ -2,19 +2,14 @@ buildscript {
     ext{
         springBootVersion = '2.1.7.RELEASE'
     }
-
     repositories {
-
         mavenCentral()
         jcenter()//https://tiii.tistory.com/45 Jcenter서비스 종료, Jcenter에서 Maven으로 마이그레이션해야함
     }
-
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
-
 }
-
 
 apply plugin : 'java'
 apply plugin : 'eclipse'
@@ -30,6 +25,13 @@ repositories {
 }
 
 dependencies {
+    implementation 'junit:junit:4.13.1'
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')//스프링부트형 Spring Data Jpa 추상화 라이브러리
+    //스프링 부트 버전에 맞춰 자동으로 jpa관련 라이브러리의 버전을 관리해줌
+    compile('com.h2database:h2')//인메모리 관계형 데이터베이스, 별도의 설치 필요없이 프로젝트 의존성만으로 관리가능
+    //메모리에서 실행되기 때문에 애플리케이션을 재시작할때마다 초기화되는 점때문에 테스트용도로 이용
+    compile('org.springframework.boot:spring-boot-starter-mustache')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
